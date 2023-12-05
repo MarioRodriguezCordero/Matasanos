@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/listaMedicamentos.dart';
 
 class NuevoMedicamento_2 extends StatefulWidget {
+  const NuevoMedicamento_2({super.key});
+
   @override
   State<NuevoMedicamento_2> createState() => _NuevoMedicamento_2State();
 }
@@ -198,7 +200,7 @@ class _NuevoMedicamento_2State extends State<NuevoMedicamento_2> {
                 child: ElevatedButton(
                   onPressed: () {
                     final destino = MaterialPageRoute(
-                                builder: (_) => ListaMedicamentos());
+                                builder: (_) => const ListaMedicamentos());
                             Navigator.push(context, destino);
                   },
                   child: const Text("Finalizar") 

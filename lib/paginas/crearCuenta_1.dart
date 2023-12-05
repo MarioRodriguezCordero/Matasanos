@@ -3,6 +3,8 @@ import 'package:matasanos/paginas/crearCuenta_2.dart';
 import 'package:matasanos/paginas/pantallaPrincipal.dart';
 
 class CrearCuenta_1 extends StatelessWidget {
+  const CrearCuenta_1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,7 @@ class CrearCuenta_1 extends StatelessWidget {
                       fixedSize: const Size(150, 40)),
                   onPressed: () {
                     final destino =
-                        MaterialPageRoute(builder: (_) => CrearCuenta_2());
+                        MaterialPageRoute(builder: (_) => const CrearCuenta_2());
                     Navigator.push(context, destino);
                   },
                   child: const Text("Para Mi"),
@@ -64,7 +66,7 @@ class CrearCuenta_1 extends StatelessWidget {
                       fixedSize: const Size(150, 40)),
                   onPressed: () {
                     final destino =
-                        MaterialPageRoute(builder: (_) => CrearCuenta_2());
+                        MaterialPageRoute(builder: (_) => const CrearCuenta_2());
                     Navigator.push(context, destino);
                   },
                   child: const Text("Para Otro"),
@@ -83,7 +85,7 @@ class CrearCuenta_1 extends StatelessWidget {
                         fixedSize: const Size(150, 40)),
                     onPressed: () {
                       final destino = MaterialPageRoute(
-                          builder: (_) => PantallaPrincipal());
+                          builder: (_) => const PantallaPrincipal());
                       Navigator.push(context, destino);
                     },
                     child: const Text("Volver"),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/home.dart';
 
 class AccesoACuenta extends StatelessWidget {
+  const AccesoACuenta({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +84,7 @@ class AccesoACuenta extends StatelessWidget {
                           fixedSize: const Size(150, 40)),
                       onPressed: () {
                         final destino =
-                            MaterialPageRoute(builder: (_) => Home());
+                            MaterialPageRoute(builder: (_) => const Home());
                         Navigator.push(context, destino);
                       },
                       child: const Text("Entrar"),

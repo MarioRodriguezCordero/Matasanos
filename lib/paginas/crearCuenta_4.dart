@@ -3,6 +3,8 @@ import 'package:matasanos/paginas/crearCuenta_3.dart';
 import 'package:matasanos/paginas/home.dart';
 
 class CrearCuenta_4 extends StatefulWidget {
+  const CrearCuenta_4({super.key});
+
   @override
   State<CrearCuenta_4> createState() => _CrearCuenta_4State();
 }
@@ -148,7 +150,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                                 fixedSize: const Size(150, 40)),
                             onPressed: () {
                               final destino = MaterialPageRoute(
-                                  builder: (_) => CrearCuenta_3());
+                                  builder: (_) => const CrearCuenta_3());
                               Navigator.push(context, destino);
                             },
                             child: const Text("Volver"),
@@ -165,7 +167,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                                 fixedSize: const Size(150, 40)),
                             onPressed: () {
                               final destino =
-                                  MaterialPageRoute(builder: (_) => Home());
+                                  MaterialPageRoute(builder: (_) => const Home());
                               Navigator.push(context, destino);
                             },
                             child: const Text("Finalizar"),

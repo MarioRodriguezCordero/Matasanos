@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/listaMedicamentos.dart';
 
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +45,7 @@ class Home extends StatelessWidget {
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
                       final destino = MaterialPageRoute(
-                                  builder: (_) => ListaMedicamentos());
+                                  builder: (_) => const ListaMedicamentos());
                               Navigator.push(context, destino);
                     },
                     child: const Text("Lista de medicamentos")),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/nuevoMedicamento_2.dart';
 
 class NuevoMedicamento_1 extends StatelessWidget {
+  const NuevoMedicamento_1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +73,7 @@ class NuevoMedicamento_1 extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     final destino = MaterialPageRoute(
-                                builder: (_) => NuevoMedicamento_2());
+                                builder: (_) => const NuevoMedicamento_2());
                             Navigator.push(context, destino);
                   },
                   child: const Text("Siguiente") 

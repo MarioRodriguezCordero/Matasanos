@@ -3,6 +3,8 @@ import 'package:matasanos/paginas/accesoACuenta.dart';
 import 'package:matasanos/paginas/crearCuenta_1.dart';
 
 class PantallaPrincipal extends StatelessWidget {
+  const PantallaPrincipal({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +45,7 @@ class PantallaPrincipal extends StatelessWidget {
                 fixedSize: const Size(150, 40)),
             onPressed: () {
               final destino =
-                  MaterialPageRoute(builder: (_) => CrearCuenta_1());
+                  MaterialPageRoute(builder: (_) => const CrearCuenta_1());
               Navigator.push(context, destino);
             },
             child: const Text("Crear cuenta"),
@@ -60,7 +62,7 @@ class PantallaPrincipal extends StatelessWidget {
                 fixedSize: const Size(170, 40)),
             onPressed: () {
               final destino =
-                  MaterialPageRoute(builder: (_) => AccesoACuenta());
+                  MaterialPageRoute(builder: (_) => const AccesoACuenta());
               Navigator.push(context, destino);
             },
             child: const Text("Acceder a cuenta"),
