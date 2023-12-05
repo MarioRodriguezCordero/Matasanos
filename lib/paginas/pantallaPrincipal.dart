@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/accesoACuenta.dart';
-import 'package:matasanos/paginas/crearCuenta.dart';
+import 'package:matasanos/paginas/crearCuenta_1.dart';
 
 class PantallaPrincipal extends StatelessWidget {
   @override
@@ -38,11 +38,12 @@ class PantallaPrincipal extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.greenAccent,
+                backgroundColor: Colors.orange,
                 elevation: 0,
                 fixedSize: const Size(150, 40)),
             onPressed: () {
-              final destino = MaterialPageRoute(builder: (_) => CrearCuenta());
+              final destino =
+                  MaterialPageRoute(builder: (_) => CrearCuenta_1());
               Navigator.push(context, destino);
             },
             child: const Text("Crear cuenta"),
@@ -54,9 +55,9 @@ class PantallaPrincipal extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.greenAccent,
+                backgroundColor: Colors.orange,
                 elevation: 0,
-                fixedSize: const Size(150, 40)),
+                fixedSize: const Size(170, 40)),
             onPressed: () {
               final destino =
                   MaterialPageRoute(builder: (_) => AccesoACuenta());
