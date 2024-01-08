@@ -182,16 +182,6 @@ class _NuevoMedicamento_2State extends State<NuevoMedicamento_2> {
               child: TextField()
             )
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text("Añadir otra hora") 
-              ),
-            )
-          ),
           Expanded(
             child: Align(
               alignment: Alignment.center,

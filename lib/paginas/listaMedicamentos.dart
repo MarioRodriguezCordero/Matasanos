@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matasanos/paginas/home.dart';
 import 'package:matasanos/paginas/nuevoMedicamento_1.dart';
 
 class ListaMedicamentos extends StatefulWidget {
@@ -40,7 +41,7 @@ class _ListaMedicamentosState extends State<ListaMedicamentos> {
         const Expanded(
           flex: 1,
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(1),
             child: Text(
               "Lista de medicamentos",
               textAlign: TextAlign.center,
@@ -82,19 +83,37 @@ class _ListaMedicamentosState extends State<ListaMedicamentos> {
                 isExpanded: item.isExpanded);
           }).toList(),
         ),
-        ElevatedButton(
-            onPressed: () {
-              final destino =
-                  MaterialPageRoute(builder: (_) => const NuevoMedicamento_1());
-              Navigator.push(context, destino);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
-              elevation: 0,
-              fixedSize: const Size(150, 100),
-            ),
-            child: const Text("Añadir nuevo\n medicamento",
-                style: TextStyle(fontSize: 20))),
+        
+        Padding(
+                padding: const EdgeInsets.all(20),
+                child: ElevatedButton(
+                    onPressed: () {
+                      final destino =
+                          MaterialPageRoute(builder: (_) => const NuevoMedicamento_1());
+                      Navigator.push(context, destino);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      elevation: 0,
+                      fixedSize: const Size(200, 80),
+                    ),
+                    child: const Text("Añadir nuevo\n medicamento",
+                        style: TextStyle(fontSize: 20)))),
+        Padding(
+                padding: const EdgeInsets.all(20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    final destino =
+                        MaterialPageRoute(builder: (_) => const Home());
+                    Navigator.push(context, destino);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orange,
+                    elevation: 0,
+                    fixedSize: const Size(150, 50),
+                  ),
+                  child: const Text("Volver",
+                      style: TextStyle(fontSize: 20)))),
         const Expanded(flex: 1, child: Text(""))
       ]),
     );

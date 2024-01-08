@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/listaMedicamentos.dart';
+import 'package:matasanos/paginas/pantallaPrincipal.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -78,6 +79,23 @@ class Home extends StatelessWidget {
                       );
                     },
                     child: const Text("Pastillas de hoy")),
+              ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        elevation: 0,
+                        fixedSize: const Size(200, 45)),
+                    onPressed: () {
+                      final destino = MaterialPageRoute(
+                                  builder: (_) => const PantallaPrincipal());
+                              Navigator.push(context, destino);
+                    },
+                    child: const Text("Cerrar sesion")),
               ),
             ),
             const Expanded(
