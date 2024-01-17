@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:matasanos/paginas/crearCuenta_1.dart';
 import 'package:matasanos/paginas/crearCuenta_3.dart';
+import 'package:matasanos/paginas/pantallaPrincipal.dart';
 
 class CrearCuenta_2 extends StatelessWidget {
   const CrearCuenta_2({super.key});
@@ -18,8 +18,7 @@ class CrearCuenta_2 extends StatelessWidget {
             const Expanded(
               flex: 1,
               child: Padding(
-                padding:
-                    EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 child: Text(
                   "MATASANOS",
                   textAlign: TextAlign.center,
@@ -90,7 +89,7 @@ class CrearCuenta_2 extends StatelessWidget {
                                 fixedSize: const Size(150, 40)),
                             onPressed: () {
                               final destino = MaterialPageRoute(
-                                  builder: (_) => const CrearCuenta_1());
+                                  builder: (_) => const PantallaPrincipal());
                               Navigator.push(context, destino);
                             },
                             child: const Text("Volver"),

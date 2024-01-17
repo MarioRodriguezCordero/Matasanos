@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/accesoACuenta.dart';
-import 'package:matasanos/paginas/crearCuenta_1.dart';
+import 'package:matasanos/paginas/crearCuenta_2.dart';
 
 class PantallaPrincipal extends StatelessWidget {
   const PantallaPrincipal({super.key});
@@ -45,7 +45,7 @@ class PantallaPrincipal extends StatelessWidget {
                 fixedSize: const Size(150, 40)),
             onPressed: () {
               final destino =
-                  MaterialPageRoute(builder: (_) => const CrearCuenta_1());
+                  MaterialPageRoute(builder: (_) => const CrearCuenta_2());
               Navigator.push(context, destino);
             },
             child: const Text("Crear cuenta"),
