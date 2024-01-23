@@ -23,7 +23,7 @@ class Item {
 
 class _ListaMedicamentosState extends State<ListaMedicamentos> {
   final List<Item> _data = List<Item>.generate(
-    5,
+    50,
     (int index) {
       return Item(
           headerText: "Item $index",
@@ -34,62 +34,53 @@ class _ListaMedicamentosState extends State<ListaMedicamentos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //##################### AppBar #####################
-      appBar: AppBar(),
-      //##################### Body #####################
-      body: Column(children: [
-        const Expanded(
-          flex: 1,
-          child: Padding(
-            padding: EdgeInsets.all(1),
-            child: Text(
-              "Lista de medicamentos",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40),
-            ),
+        //##################### AppBar #####################
+        appBar: AppBar(
+          title: const Text(
+            "Lista de medicamentos",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.black),
           ),
         ),
-        ExpansionPanelList(
-          expansionCallback: (int index, bool isExpanded) {
-            setState(() {
-              _data[index].isExpanded = !isExpanded;
-            });
-          },
-          children: _data.map<ExpansionPanel>((Item item) {
-            return ExpansionPanel(
-                canTapOnHeader: true,
-                headerBuilder: (BuildContext context, bool isExpanded) {
-                  return ListTile(
-                    title: Text(item.headerText),
-                  );
-                },
-                body: ListTile(
-                  title: Text(item.expandedText),
-                  subtitle: const Text("Asdadad"),
-                  trailing: const Icon(
-                    Icons.delete,
-                    color: Colors.orange,
-                  ),
-                  onTap: () {
-                    setState(() {
-                      _data.removeWhere(
-                          (Item currentItem) => item == currentItem);
-                    });
-                  },
-                ),
-                isExpanded: item.isExpanded);
-          }).toList(),
-        ),
-        
-        Padding(
+        //##################### Body #####################
+        body: SingleChildScrollView(
+          child: Column(children: [
+            ExpansionPanelList(
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  _data[index].isExpanded = isExpanded;
+                });
+              },
+              children: _data.map<ExpansionPanel>((Item item) {
+                return ExpansionPanel(
+                    isExpanded: item.isExpanded,
+                    canTapOnHeader: true,
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return ListTile(
+                        title: Text(item.headerText),
+                      );
+                    },
+                    body: ListTile(
+                        title: Text(item.expandedText),
+                        subtitle: const Text("Asdadad"),
+                        trailing: const Icon(
+                          Icons.delete,
+                          color: Colors.orange,
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _data.removeWhere(
+                                (Item currentItem) => item == currentItem);
+                          });
+                        }));
+              }).toList(),
+            ),
+            Padding(
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
                     onPressed: () {
-                      final destino =
-                          MaterialPageRoute(builder: (_) => const NuevoMedicamento_1());
+                      final destino = MaterialPageRoute(
+                          builder: (_) => const NuevoMedicamento_1());
                       Navigator.push(context, destino);
                     },
                     style: ElevatedButton.styleFrom(
@@ -99,23 +90,22 @@ class _ListaMedicamentosState extends State<ListaMedicamentos> {
                     ),
                     child: const Text("Añadir nuevo\n medicamento",
                         style: TextStyle(fontSize: 20)))),
-        Padding(
+            Padding(
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
-                  onPressed: () {
-                    final destino =
-                        MaterialPageRoute(builder: (_) => const Home());
-                    Navigator.push(context, destino);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    elevation: 0,
-                    fixedSize: const Size(150, 50),
-                  ),
-                  child: const Text("Volver",
-                      style: TextStyle(fontSize: 20)))),
-        const Expanded(flex: 1, child: Text(""))
-      ]),
-    );
+                    onPressed: () {
+                      final destino =
+                          MaterialPageRoute(builder: (_) => const Home());
+                      Navigator.push(context, destino);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      elevation: 0,
+                      fixedSize: const Size(150, 50),
+                    ),
+                    child:
+                        const Text("Volver", style: TextStyle(fontSize: 20)))),
+          ]),
+        ));
   }
 }
