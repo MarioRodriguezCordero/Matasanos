@@ -1,8 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:matasanos/paginas/nuevoMedicamento_2.dart';
 
-class NuevoMedicamento_1 extends StatelessWidget {
+class NuevoMedicamento_1 extends StatefulWidget {
   const NuevoMedicamento_1({super.key});
+
+  @override
+  State<NuevoMedicamento_1> createState() => _NuevoMedicamento_1State();
+}
+
+class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
+  File? _selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +57,25 @@ class NuevoMedicamento_1 extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
-                      onPressed: () {}, child: const Text("Importar foto")),
+                      onPressed: () {
+                        _fotoGaleria();
+                      },
+                      child: const Text("Importar foto")),
                 )),
             Align(
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
-                      onPressed: () {}, child: const Text("Hacer foto")),
+                      onPressed: () {
+                        _fotoCamara();
+                      },
+                      child: const Text("Hacer foto")),
                 )),
+            const SizedBox(height: 20),
+            _selectedImage != null
+                ? Image.file(_selectedImage!)
+                : const Text("No hay foto"),
             Align(
                 alignment: Alignment.center,
                 child: Padding(
@@ -64,11 +84,32 @@ class NuevoMedicamento_1 extends StatelessWidget {
                       onPressed: () {
                         final destino = MaterialPageRoute(
                             builder: (_) => const NuevoMedicamento_2());
-                        Navigator.push(context, destino);
+                        Navigator.pushNamed(context, '/', 
+                        arguments: );
                       },
                       child: const Text("Siguiente")),
                 )),
           ],
         )));
+  }
+
+  Future _fotoGaleria() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (returnedImage == null) return;
+    setState(() {
+      _selectedImage = File(returnedImage!.path);
+    });
+  }
+
+  Future _fotoCamara() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.camera);
+
+    if (returnedImage == null) return;
+    setState(() {
+      _selectedImage = File(returnedImage!.path);
+    });
   }
 }

@@ -23,7 +23,7 @@ class Item {
 
 class _ListaMedicamentosState extends State<ListaMedicamentos> {
   final List<Item> _data = List<Item>.generate(
-    50,
+    5,
     (int index) {
       return Item(
           headerText: "Item $index",
