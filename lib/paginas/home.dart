@@ -7,6 +7,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String _a = "";
     return Scaffold(
         //##################### AppBar #####################
         appBar: AppBar(),
@@ -46,8 +47,8 @@ class Home extends StatelessWidget {
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
                       final destino = MaterialPageRoute(
-                                  builder: (_) => const ListaMedicamentos());
-                              Navigator.push(context, destino);
+                          builder: (_) => ListaMedicamentos(_a));
+                      Navigator.push(context, destino);
                     },
                     child: const Text("Lista de medicamentos")),
               ),
@@ -63,20 +64,19 @@ class Home extends StatelessWidget {
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
                       showDialog(
-                        context: context, 
-                        builder: (context) => AlertDialog(
-                          title: const Text("Pastillas de hoy"),
-                          content: const Text("Tienes que tomarte la pastilla:\n Medicamento A 400mg"),
-                          actions: <Widget>[
-                            OutlinedButton(
-                              child: const Text("Ok"),
-                              onPressed: () {
-                                Navigator.of(context).pop("ok");
-                              }
-                            )
-                          ],
-                        )
-                      );
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: const Text("Pastillas de hoy"),
+                                content: const Text(
+                                    "Tienes que tomarte la pastilla:\n Medicamento A 400mg"),
+                                actions: <Widget>[
+                                  OutlinedButton(
+                                      child: const Text("Ok"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop("ok");
+                                      })
+                                ],
+                              ));
                     },
                     child: const Text("Pastillas de hoy")),
               ),
@@ -92,8 +92,8 @@ class Home extends StatelessWidget {
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
                       final destino = MaterialPageRoute(
-                                  builder: (_) => const PantallaPrincipal());
-                              Navigator.push(context, destino);
+                          builder: (_) => const PantallaPrincipal());
+                      Navigator.push(context, destino);
                     },
                     child: const Text("Cerrar sesion")),
               ),

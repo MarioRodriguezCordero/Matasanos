@@ -3,7 +3,9 @@ import 'package:matasanos/paginas/home.dart';
 import 'package:matasanos/paginas/nuevoMedicamento_1.dart';
 
 class ListaMedicamentos extends StatefulWidget {
-  const ListaMedicamentos({super.key});
+  String _a;
+
+  ListaMedicamentos(this._a);
 
   @override
   State<ListaMedicamentos> createState() => _ListaMedicamentosState();
@@ -37,7 +39,7 @@ class _ListaMedicamentosState extends State<ListaMedicamentos> {
         //##################### AppBar #####################
         appBar: AppBar(
           title: const Text(
-            "Lista de medicamentos",
+            "Lista de Medicamentos",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.black),
           ),
