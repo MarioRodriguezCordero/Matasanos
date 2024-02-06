@@ -4,7 +4,7 @@ import 'package:path/path.dart';
 //helper para la base de datos
 class BDHelper {
   static Database? _baseDatos;
-  static const String nombreBD = "BDMedicame.db";
+  static const String nombreBD = "BDMatasanos.db";
 
   //iniciar la base de datos
   Future<Database?> get baseDatos async {
@@ -63,9 +63,7 @@ class BDHelper {
       await db.execute(
           "CREATE TABLE IF NOT EXISTS VisitaMedica(id INTEGER PRIMARY KEY, especialidad TEXT, doctor TEXT, lugar TEXT, fecha TEXT)");
       //para añadir una segunda tabla
-      // await db.execute(
-      //   "CREATE TABLE Resultados(id INTEGER PRIMARY KEY, jugador1 TEXT, j1set1 TEXT, j1set1 TEXT)"
-      // );
+      await db.execute("CREATE TABLE Medicamentos(id INTEGER PRIMARY KEY, )");
     });
     return baseDatos;
   }
