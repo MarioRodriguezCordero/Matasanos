@@ -5,7 +5,7 @@ import 'package:matasanos/paginas/nuevoMedicamento_1.dart';
 class ListaMedicamentos extends StatefulWidget {
   String _a;
 
-  ListaMedicamentos(this._a);
+  ListaMedicamentos(this._a, {super.key});
 
   @override
   State<ListaMedicamentos> createState() => _ListaMedicamentosState();

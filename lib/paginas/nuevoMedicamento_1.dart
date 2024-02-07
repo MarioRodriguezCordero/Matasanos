@@ -297,7 +297,7 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
 
     if (returnedImage == null) return;
     setState(() {
-      _selectedImage = File(returnedImage!.path);
+      _selectedImage = File(returnedImage.path);
     });
   }
 
