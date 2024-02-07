@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/pantallaPrincipal.dart';
+import 'package:matasanos/services/caida_services.dart';
 
-void main() {
+void main() async {
+  //este metodo se asegura de ejecutar todas las inicializaciones antes de acceder a la interfaz
+  WidgetsFlutterBinding.ensureInitialized();
+  //inicializamos las notificaciones
+  await initNotifications();
+
   runApp(const MyApp());
 }
 
