@@ -64,7 +64,10 @@ class BDHelper {
           "CREATE TABLE IF NOT EXISTS VisitaMedica(id INTEGER PRIMARY KEY, especialidad TEXT, doctor TEXT, lugar TEXT, fecha TEXT)");
       //para añadir una segunda tabla
       await db.execute(
-          "CREATE TABLE Medicamentos(id INTEGER PRIMARY KEY, nombre TEXT, descripcion TEXT, imagenMedicamento TEXT, imagenEnvase TEXT, fechaCaducidad DATETIME, cantidadPorEnvase INTEGER, frecuencia INTEGER, cantidadAcutal INTEGER, cantidadMinima INTEGER, dosis INTEGER, activo BOOLEAN)");
+          "CREATE TABLE Medicamentos(id INTEGER PRIMARY KEY, nombre TEXT, imagenEnvase TEXT, frecuencia INTEGER, cantidadAcutal INTEGER, dosis INTEGER)");
+
+      await db.execute(
+          "INSERT INTO Medicamentos(nombre, imagenEnvase, frecuencia, cantidadActual, dosis) VALUES('Paracetamol', '', 'Lunes y miercoles', 10, 1)");
     });
     return baseDatos;
   }

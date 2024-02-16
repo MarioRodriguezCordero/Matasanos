@@ -27,8 +27,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
             const Expanded(
               flex: 1,
               child: Padding(
-                padding:
-                    EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 child: Text(
                   "MATASANOS",
                   textAlign: TextAlign.center,
@@ -57,7 +56,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                     alignment: Alignment.center,
                     child: Padding(
                         padding: const EdgeInsets.only(
-                            top: 10, bottom: 10, left: 20, right: 20),
+                            top: 10, bottom: 10, left: 20, right: 5),
                         child: Checkbox(
                             checkColor: Colors.black,
                             value: isRecordChecked,
@@ -70,7 +69,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: 10, bottom: 10, left: 20, right: 20),
+                          top: 10, bottom: 10, left: 5, right: 20),
                       child: Text(
                         "Recordatorios",
                         overflow: TextOverflow.clip,
@@ -85,7 +84,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                     alignment: Alignment.center,
                     child: Padding(
                         padding: const EdgeInsets.only(
-                            top: 10, bottom: 10, left: 20, right: 20),
+                            top: 10, bottom: 10, left: 20, right: 5),
                         child: Checkbox(
                             checkColor: Colors.black,
                             value: isListChecked,
@@ -98,7 +97,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: 10, bottom: 10, left: 20, right: 20),
+                          top: 10, bottom: 10, left: 5, right: 20),
                       child: Text(
                         "Lista de medicamentos",
                         overflow: TextOverflow.clip,
@@ -113,7 +112,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                     alignment: Alignment.center,
                     child: Padding(
                         padding: const EdgeInsets.only(
-                            top: 10, bottom: 10, left: 20, right: 20),
+                            top: 10, bottom: 10, left: 20, right: 5),
                         child: Checkbox(
                             checkColor: Colors.black,
                             value: isReposChecked,
@@ -126,7 +125,7 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                     alignment: Alignment.center,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: 10, bottom: 10, left: 20, right: 20),
+                          top: 10, bottom: 10, left: 5, right: 20),
                       child: Text(
                         "Reposicion de medicamentos",
                         overflow: TextOverflow.clip,
@@ -166,8 +165,8 @@ class _CrearCuenta_4State extends State<CrearCuenta_4> {
                                 elevation: 0,
                                 fixedSize: const Size(150, 40)),
                             onPressed: () {
-                              final destino =
-                                  MaterialPageRoute(builder: (_) => const Home());
+                              final destino = MaterialPageRoute(
+                                  builder: (_) => const Home());
                               Navigator.push(context, destino);
                             },
                             child: const Text("Finalizar"),
