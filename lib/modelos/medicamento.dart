@@ -1,72 +1,70 @@
+import 'package:matasanos/modelos/base_datos.dart';
+
 class Medicamento {
-  int? _id;
-  late String _nombre;
-  late String _imagenEnvase;
-  late int _frecuencia;
-  late int _cantidadActual;
-  late int _dosis;
+  int? id;
+  late String nombre;
+  late String imagenEnvase;
+  late String frecuencia;
+  late String cantidadActual;
+  late String dosis;
   //constructor
   Medicamento() {
-    this._nombre = '';
-    this._imagenEnvase = '';
-    this._frecuencia = 0;
-    this._cantidadActual = 0;
-    this._dosis = 0;
+    nombre = '';
+    imagenEnvase = '';
+    frecuencia = 'Lunes y Martes';
+    cantidadActual = '0';
+    dosis = '0';
   }
   //constructor sin id
-  Medicamento.withoutId(this._nombre, this._imagenEnvase, this._frecuencia,
-      this._cantidadActual, this._dosis);
+  Medicamento.withoutId(
+    this.nombre, 
+    this.imagenEnvase, 
+    this.frecuencia,
+    this.cantidadActual, 
+    this.dosis);
   //constructor con id
-  Medicamento.withId(this._id, this._nombre, this._imagenEnvase,
-      this._frecuencia, this._cantidadActual, this._dosis);
+  Medicamento.withId(
+    this.id, 
+    this.nombre, 
+    this.imagenEnvase,
+    this.frecuencia, 
+    this.cantidadActual, 
+    this.dosis);
   //constructor con map
   Medicamento.fromMap(Map<String, dynamic> map) {
-    this._id = (map['id'] != null) ? map['id'] : null;
-    this._nombre = (map['nombre'] != null) ? map['nombre'] : '';
-    this._imagenEnvase =
+    id = (map['id'] != null) ? map['id'] : null;
+    nombre = (map['nombre'] != null) ? map['nombre'] : '';
+    imagenEnvase =
         (map['imagenEnvase'] != null) ? map['imagenEnvase'] : '';
-    this._frecuencia = (map['frecuencia'] != null) ? map['frecuencia'] : 0;
-    this._cantidadActual =
+    frecuencia = (map['frecuencia'] != null) ? map['frecuencia'] : 0;
+    cantidadActual =
         (map['cantidadActual'] != null) ? map['cantidadActual'] : 0;
-    this._dosis = (map['dosis'] != null) ? map['dosis'] : 0;
-  }
-
-  //Getters y setters
-  int? get id => _id;
-  String get nombre => _nombre;
-  String get imagenEnvase => _imagenEnvase;
-  int get cantidadInicial => _frecuencia;
-  int get cantidadActual => _cantidadActual;
-  int get dosis => _dosis;
-
-  set nombre(String nombre) {
-    this._nombre = nombre;
-  }
-
-  set imagenEnvase(String imagenEnvase) {
-    this._imagenEnvase = imagenEnvase;
-  }
-
-  set frecuencia(int frecuencia) {
-    this._frecuencia = cantidadInicial;
-  }
-
-  set cantidadActual(int cantidadActual) {
-    this._cantidadActual = cantidadActual;
-  }
-
-  set dosis(int dosis) {
-    this._dosis = dosis;
+    dosis = (map['dosis'] != null) ? map['dosis'] : 0;
   }
 
   Map<String, dynamic> toMap() {
-    var map = Map<String, dynamic>();
-    if (_id != null) map['id'] = _id;
-    map['nombre'] = _nombre;
-    map['imagenEnvase'] = _imagenEnvase;
-    map['frecuencia'] = _frecuencia;
-    map['cantidadActual'] = _cantidadActual;
-    map['dosis'] = _dosis;
+    var map = <String, dynamic>{};
+    if (id != null) map['id'] = id;
+    map['nombre'] = nombre;
+    map['imagenEnvase'] = imagenEnvase;
+    map['frecuencia'] = frecuencia;
+    map['cantidadActual'] = cantidadActual;
+    map['dosis'] = dosis;
     return map;
+  }
+
+  Future<List<Medicamento>> getMedicamento() async {
+    List<Medicamento> Medicamentos = [];
+    BDHelper bdHelper = BDHelper();
+    List <Map<String, dynamic>> medicamentoBD = await bdHelper.consultarBD('Medicamentos');
+    for (int i = 0; i < medicamentoBD.length; i++) {
+      Medicamentos.add(Medicamento.fromMap(medicamentoBD[i]));
+    }
+    return Medicamentos;
+  }
+
+  saveMedicamento(Medicamento medicamento) async {
+    BDHelper bdHelper = BDHelper();
+    bdHelper.insertarBD('Medicamentos', medicamento.toMap());
   }
 }

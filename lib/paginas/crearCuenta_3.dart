@@ -34,6 +34,8 @@ class _CrearCuenta_3State extends State<CrearCuenta_3> {
                         fontSize: 50),
                   ),
                 ),
+
+                // Contraseña
                 const Align(
                   alignment: Alignment.center,
                   child: Padding(
@@ -52,6 +54,8 @@ class _CrearCuenta_3State extends State<CrearCuenta_3> {
                         padding: EdgeInsets.only(
                             top: 10, bottom: 10, left: 20, right: 20),
                         child: TextField())),
+
+                //Repetir contraseña
                 const Align(
                   alignment: Alignment.center,
                   child: Padding(
@@ -70,6 +74,8 @@ class _CrearCuenta_3State extends State<CrearCuenta_3> {
                         padding: EdgeInsets.only(
                             top: 10, bottom: 10, left: 20, right: 20),
                         child: TextField())),
+
+                //Introduccion fecha de nacimiento
                 const Align(
                   alignment: Alignment.center,
                   child: Padding(
@@ -118,6 +124,8 @@ class _CrearCuenta_3State extends State<CrearCuenta_3> {
                     alignment: Alignment.center,
                     child: Padding(
                         padding: EdgeInsets.all(20), child: TextField())),
+
+                // Boton de vuelta
                 Container(
                     child: Row(
                   children: [
@@ -138,6 +146,8 @@ class _CrearCuenta_3State extends State<CrearCuenta_3> {
                             child: const Text("Volver"),
                           ),
                         )),
+
+                    //boton "siguiente"
                     Align(
                         alignment: Alignment.center,
                         child: Padding(

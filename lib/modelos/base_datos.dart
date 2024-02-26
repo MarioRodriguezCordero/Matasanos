@@ -1,5 +1,4 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 
 //helper para la base de datos
 class BDHelper {

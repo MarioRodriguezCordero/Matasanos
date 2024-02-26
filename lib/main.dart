@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/pantallaPrincipal.dart';
 import 'package:matasanos/services/caida_services.dart';
+import 'package:matasanos/services/detector_caidas.dart';
+import 'package:matasanos/tema/temaActual.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeLoader(0)),
+        ChangeNotifierProvider(create: (_) => Detector()),
+        ChangeNotifierProvider(create: (_) => AccelerometerProvider())
+        ],
+      child: const MyApp())
+    );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,8 +23,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: PantallaPrincipal(),
+    final tema = Provider.of<ThemeLoader>(context).actualTheme;
+    return MaterialApp(
+      theme: tema,
+      home: const PantallaPrincipal(),
     );
   }
 }

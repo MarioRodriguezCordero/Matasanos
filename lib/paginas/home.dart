@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:matasanos/paginas/configuracion.dart';
 import 'package:matasanos/paginas/listaMedicamentos.dart';
 import 'package:matasanos/paginas/pantallaPrincipal.dart';
+import 'package:matasanos/tema/temaActual.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    String _a = "";
+    final tema = Provider.of<ThemeLoader>(context).actualTheme;
+
     return Scaffold(
         //##################### AppBar #####################
-        appBar: AppBar(),
+        appBar: AppBar(
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                final destino = MaterialPageRoute(
+                  builder: (_) => const Configuracion());
+                Navigator.push(context, destino);
+              }
+            )
+          ]
+        ),
         //##################### Body #####################
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -42,12 +60,12 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
+                        backgroundColor: tema.colorScheme.onSurface,
                         elevation: 0,
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
                       final destino = MaterialPageRoute(
-                          builder: (_) => ListaMedicamentos(_a));
+                          builder: (_) => const ListaMedicamentos());
                       Navigator.push(context, destino);
                     },
                     child: const Text("Lista de medicamentos")),
@@ -59,7 +77,7 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
+                        backgroundColor: tema.colorScheme.onSurface,
                         elevation: 0,
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
@@ -87,7 +105,7 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange,
+                        backgroundColor: tema.colorScheme.onSurface,
                         elevation: 0,
                         fixedSize: const Size(200, 45)),
                     onPressed: () {

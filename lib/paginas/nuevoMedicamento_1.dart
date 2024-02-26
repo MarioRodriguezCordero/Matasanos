@@ -1,9 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:matasanos/modelos/medicamento.dart';
 import 'package:matasanos/paginas/listaMedicamentos.dart';
+import 'package:matasanos/paginas/configuracion.dart';
+import 'package:matasanos/tema/temaActual.dart';
+import 'package:provider/provider.dart';
 
 class NuevoMedicamento_1 extends StatefulWidget {
+
   const NuevoMedicamento_1({super.key});
 
   @override
@@ -19,13 +24,47 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
   bool? viernes = false;
   bool? sabado = false;
   bool? domingo = false;
-  String _a = "";
+
+  final controlNombre = TextEditingController();
+  final controlFrecuencia = TextEditingController();
+  final controlDosis = TextEditingController();
+  final controlCantidad = TextEditingController();
+
+  @override
+  void dispose() {
+    controlNombre.dispose();
+    controlCantidad.dispose();
+    controlDosis.dispose();
+    controlFrecuencia.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+  final tema = Provider.of<ThemeLoader>(context).actualTheme;
+  Medicamento medicamento = Medicamento();
+  controlNombre.text = medicamento.nombre;
+  controlCantidad.text = medicamento.cantidadActual;
+  controlDosis.text = medicamento.dosis;
+  controlFrecuencia.text = medicamento.frecuencia ;
+
     return Scaffold(
         //##################### AppBar #####################
-        appBar: AppBar(),
+        appBar: AppBar(
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                final destino = MaterialPageRoute(
+                  builder: (_) => Configuracion());
+                Navigator.push(context, destino);
+              }
+            )
+          ]
+        ),
         //##################### Body #####################
         body: SingleChildScrollView(
             child: Column(
@@ -40,11 +79,13 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
             Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.all(8),
                 child: TextField(
-                  onSubmitted: (value) {
-                    _a = value;
-                  },
+                  controller: controlNombre,
+                  style: TextStyle(
+                    color: tema.colorScheme.primary
+                    )
+                
                 ),
               ),
             ),
@@ -99,8 +140,8 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.blue,
+                  decoration: BoxDecoration(
+                      color: tema.colorScheme.primary,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10)),
@@ -114,8 +155,8 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                         lunes = value;
                       });
                     },
-                    activeColor: Colors.deepPurpleAccent,
-                    checkColor: Colors.white,
+                    activeColor: tema.colorScheme.secondary,
+                    checkColor: Colors.black,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
@@ -137,9 +178,9 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                         martes = value;
                       });
                     },
-                    activeColor: Colors.deepPurpleAccent,
-                    checkColor: Colors.white,
-                    tileColor: Colors.blue,
+                    activeColor: tema.colorScheme.secondary,
+                    checkColor: Colors.black,
+                    tileColor: tema.colorScheme.primary,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
@@ -161,9 +202,9 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                         miercoles = value;
                       });
                     },
-                    activeColor: Colors.deepPurpleAccent,
-                    checkColor: Colors.white,
-                    tileColor: Colors.blue,
+                    activeColor: tema.colorScheme.secondary,
+                    checkColor: Colors.black,
+                    tileColor: tema.colorScheme.primary,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
@@ -185,9 +226,9 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                         jueves = value;
                       });
                     },
-                    activeColor: Colors.deepPurpleAccent,
-                    checkColor: Colors.white,
-                    tileColor: Colors.blue,
+                    activeColor: tema.colorScheme.secondary,
+                    checkColor: Colors.black,
+                    tileColor: tema.colorScheme.primary,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
@@ -209,9 +250,9 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                         viernes = value;
                       });
                     },
-                    activeColor: Colors.deepPurpleAccent,
-                    checkColor: Colors.white,
-                    tileColor: Colors.blue,
+                    activeColor: tema.colorScheme.secondary,
+                    checkColor: Colors.black,
+                    tileColor: tema.colorScheme.primary,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
@@ -233,9 +274,9 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                         sabado = value;
                       });
                     },
-                    activeColor: Colors.deepPurpleAccent,
-                    checkColor: Colors.white,
-                    tileColor: Colors.blue,
+                    activeColor: tema.colorScheme.secondary,
+                    checkColor: Colors.black,
+                    tileColor: tema.colorScheme.primary,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
@@ -246,8 +287,8 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.blue,
+                  decoration: BoxDecoration(
+                      color: tema.colorScheme.primary,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10))),
@@ -259,8 +300,8 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                         domingo = value;
                       });
                     },
-                    activeColor: Colors.deepPurpleAccent,
-                    checkColor: Colors.white,
+                    activeColor: tema.colorScheme.secondary,
+                    checkColor: Colors.black,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                 ),
@@ -270,19 +311,47 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.all(8),
-                  child: Text("Hora a la que se\n toma el medicamento"),
+                  child: Text("Cantidad de pastillas en la caja"),
                 )),
+            Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.all(8), 
+                  child: TextField(
+                    controller: controlCantidad,
+                    style: TextStyle(
+                      color: tema.colorScheme.primary
+                  )
+                )
+              )
+            ),
             const Align(
                 alignment: Alignment.center,
-                child: Padding(padding: EdgeInsets.all(8), child: TextField())),
+                child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text("¿De cuanto es la dosis que se tiene que tomar?"),
+                )),
+            Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.all(8), 
+                  child: TextField(
+                    controller: controlDosis,
+                    style: TextStyle(
+                      color: tema.colorScheme.primary
+                  )
+                )
+              )
+            ),
             Align(
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
                       onPressed: () {
+                        medicamento.saveMedicamento(medicamento);
                         final destino = MaterialPageRoute(
-                            builder: (_) => ListaMedicamentos(_a));
+                            builder: (_) => ListaMedicamentos());
                         Navigator.push(context, destino);
                       },
                       child: const Text("Finalizar")),
