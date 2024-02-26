@@ -311,6 +311,24 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.all(8),
+                  child: Text("Frecuencia"),
+                )),
+            Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.all(8), 
+                  child: TextField(
+                    controller: controlFrecuencia,
+                    style: TextStyle(
+                      color: tema.colorScheme.primary
+                  )
+                )
+              )
+            ),
+            const Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.all(8),
                   child: Text("Cantidad de pastillas en la caja"),
                 )),
             Align(
