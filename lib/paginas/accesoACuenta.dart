@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:matasanos/paginas/home.dart';
+import 'package:matasanos/tema/temaActual.dart';
+import 'package:provider/provider.dart';
 
 class AccesoACuenta extends StatelessWidget {
   const AccesoACuenta({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final tema = Provider.of<ThemeLoader>(context).actualTheme;
+
     return Scaffold(
         //##################### AppBar #####################
         appBar: AppBar(),
@@ -13,64 +17,90 @@ class AccesoACuenta extends StatelessWidget {
         body: Center(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const Expanded(
+          Expanded(
             flex: 1,
             child: Padding(
-              padding:
-                  EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               child: Text(
                 "MATASANOS",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.black,
+                    color: tema.colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
                     fontSize: 50),
               ),
             ),
           ),
-          const Align(
+
+          // Este Textfield sirve para introducir el nombre del dueño de la cuenta
+          Align(
             alignment: Alignment.center,
             child: Padding(
               padding:
                   EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
               child: Text(
                 "Nombre",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: tema.colorScheme.primary),
               ),
             ),
           ),
-          const Align(
+          Align(
               alignment: Alignment.center,
               child: Padding(
                   padding:
                       EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
-                  child: TextField())),
-          const Align(
+                  child: TextField(
+                    style: TextStyle(color: tema.colorScheme.secondary),
+                  ))),
+
+          // Texfield para introducir el primer apellido
+          Align(
             alignment: Alignment.center,
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Text(
                 "1º Apellido",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: tema.colorScheme.primary),
               ),
             ),
           ),
-          const Align(
+
+          // Introduces la contraseña en este textfield
+          Align(
               alignment: Alignment.center,
-              child: Padding(padding: EdgeInsets.all(20), child: TextField())),
-          const Align(
+              child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    style: TextStyle(color: tema.colorScheme.secondary),
+                  ))),
+          Align(
             alignment: Alignment.center,
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Text(
                 "Contraseña",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: tema.colorScheme.primary),
               ),
             ),
           ),
-          const Align(
+          Align(
               alignment: Alignment.center,
-              child: Padding(padding: EdgeInsets.all(20), child: TextField())),
+              child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    style: TextStyle(color: tema.colorScheme.secondary),
+                  ))),
+
+          // Boton para entrar a la pagina home
           Expanded(
               flex: 1,
               child: Align(
@@ -79,7 +109,7 @@ class AccesoACuenta extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
+                          backgroundColor: tema.colorScheme.background,
                           elevation: 0,
                           fixedSize: const Size(150, 40)),
                       onPressed: () {

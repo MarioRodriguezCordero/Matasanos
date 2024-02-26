@@ -20,16 +20,16 @@ class ListaMedicamentos extends StatelessWidget {
     return Scaffold(
         //##################### AppBar #####################
         appBar: AppBar(
-            title: const Text(
+            title: Text(
               "Lista de Medicamentos",
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: tema.colorScheme.secondary),
             ),
             actions: <Widget>[
               IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.settings,
-                    color: Colors.black,
+                    color: tema.colorScheme.secondary,
                   ),
                   onPressed: () {
                     final destino = MaterialPageRoute(
@@ -50,7 +50,6 @@ class ListaMedicamentos extends StatelessWidget {
                     const SizedBox(
                       height: 5.0,
                     ),
-                    //See /widgets/container/custom_medicine_container.dart to know more
                     FutureBuilder(
                         future: medicamento.getMedicamento(),
                         builder: (context,
@@ -72,7 +71,7 @@ class ListaMedicamentos extends StatelessWidget {
                             );
                           } else {
                             return const Center(
-                              //While the DB loads, display a progress indicator
+                              //Enseña un simbolo de cargado cuando esta cargando la base de datos
                               child: CircularProgressIndicator(),
                             );
                           }
@@ -83,6 +82,8 @@ class ListaMedicamentos extends StatelessWidget {
                   ],
                 ),
               ),
+
+              // Este boton sirve para volver a la pagina home
               Padding(
                   padding: const EdgeInsets.all(20),
                   child: ElevatedButton(
@@ -101,7 +102,7 @@ class ListaMedicamentos extends StatelessWidget {
             ],
           ),
         ),
-        //When you touch the button, display the creation med page
+        //Este boton te lleva a la pagina de crear medicamentos
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             final destino =

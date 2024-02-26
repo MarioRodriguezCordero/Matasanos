@@ -14,25 +14,22 @@ class Home extends StatelessWidget {
 
     return Scaffold(
         //##################### AppBar #####################
-        appBar: AppBar(
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(
+        appBar: AppBar(actions: <Widget>[
+          IconButton(
+              icon: Icon(
                 Icons.settings,
-                color: Colors.black,
+                color: tema.colorScheme.secondary,
               ),
               onPressed: () {
-                final destino = MaterialPageRoute(
-                  builder: (_) => const Configuracion());
+                final destino =
+                    MaterialPageRoute(builder: (_) => const Configuracion());
                 Navigator.push(context, destino);
-              }
-            )
-          ]
-        ),
+              })
+        ]),
         //##################### Body #####################
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Expanded(
+            Expanded(
               flex: 1,
               child: Padding(
                 padding:
@@ -41,17 +38,19 @@ class Home extends StatelessWidget {
                   "MATASANOS",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.black,
+                      color: tema.colorScheme.onPrimary,
                       fontWeight: FontWeight.bold,
                       fontSize: 50),
                 ),
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.center,
               child: Padding(
                 padding: EdgeInsets.all(20),
-                child: Text("Hola, 'Usuario'", style: TextStyle(fontSize: 20)),
+                child: Text("Hola, 'Usuario'",
+                    style: TextStyle(
+                        fontSize: 20, color: tema.colorScheme.secondary)),
               ),
             ),
             Align(
@@ -60,7 +59,7 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: tema.colorScheme.onSurface,
+                        backgroundColor: tema.colorScheme.background,
                         elevation: 0,
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
@@ -77,7 +76,7 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: tema.colorScheme.onSurface,
+                        backgroundColor: tema.colorScheme.background,
                         elevation: 0,
                         fixedSize: const Size(200, 45)),
                     onPressed: () {
@@ -105,7 +104,7 @@ class Home extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: tema.colorScheme.onSurface,
+                        backgroundColor: tema.colorScheme.background,
                         elevation: 0,
                         fixedSize: const Size(200, 45)),
                     onPressed: () {

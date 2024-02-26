@@ -17,7 +17,8 @@ class _ConfiguracionState extends State<Configuracion> {
     final detector = Provider.of<Detector>(context);
 
     return Scaffold(
-      backgroundColor: tema.colorScheme.surface,
+        appBar: AppBar(),
+        backgroundColor: tema.colorScheme.surface,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -41,8 +42,7 @@ class _ConfiguracionState extends State<Configuracion> {
                           vertical: 2.0, horizontal: 10.0),
                       decoration: BoxDecoration(
                         color: tema.colorScheme.secondary,
-                        border:
-                            Border.all(color: tema.colorScheme.primary),
+                        border: Border.all(color: tema.colorScheme.primary),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Row(
@@ -75,8 +75,7 @@ class _ConfiguracionState extends State<Configuracion> {
                           vertical: 2.0, horizontal: 10.0),
                       decoration: BoxDecoration(
                         color: tema.colorScheme.secondary,
-                        border:
-                            Border.all(color: tema.colorScheme.primary),
+                        border: Border.all(color: tema.colorScheme.primary),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: SwitchListTile(
@@ -102,7 +101,6 @@ class _ConfiguracionState extends State<Configuracion> {
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }

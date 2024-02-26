@@ -54,6 +54,7 @@ class BDHelper {
     return resultado;
   }
 
+  //Iniciar la base de datos
   _inicializarBD() async {
     var directorio = await getDatabasesPath();
     String path = directorio + nombreBD;
@@ -61,7 +62,6 @@ class BDHelper {
         onCreate: (Database db, int version) async {
       await db.execute(
           "CREATE TABLE IF NOT EXISTS VisitaMedica(id INTEGER PRIMARY KEY, especialidad TEXT, doctor TEXT, lugar TEXT, fecha TEXT)");
-      //para añadir una segunda tabla
       await db.execute(
           "CREATE TABLE Medicamentos(id INTEGER PRIMARY KEY, nombre TEXT, imagenEnvase TEXT, frecuencia TEXT, cantidadActual TEXT, dosis TEXT)");
 
