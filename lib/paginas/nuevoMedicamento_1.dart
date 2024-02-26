@@ -8,7 +8,6 @@ import 'package:matasanos/tema/temaActual.dart';
 import 'package:provider/provider.dart';
 
 class NuevoMedicamento_1 extends StatefulWidget {
-
   const NuevoMedicamento_1({super.key});
 
   @override
@@ -41,30 +40,23 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
 
   @override
   Widget build(BuildContext context) {
-  final tema = Provider.of<ThemeLoader>(context).actualTheme;
-  Medicamento medicamento = Medicamento();
-  controlNombre.text = medicamento.nombre;
-  controlCantidad.text = medicamento.cantidadActual;
-  controlDosis.text = medicamento.dosis;
-  controlFrecuencia.text = medicamento.frecuencia ;
+    final tema = Provider.of<ThemeLoader>(context).actualTheme;
+    Medicamento medicamento = Medicamento();
 
     return Scaffold(
         //##################### AppBar #####################
-        appBar: AppBar(
-          actions: <Widget>[
-            IconButton(
+        appBar: AppBar(actions: <Widget>[
+          IconButton(
               icon: const Icon(
                 Icons.settings,
                 color: Colors.white,
               ),
               onPressed: () {
-                final destino = MaterialPageRoute(
-                  builder: (_) => Configuracion());
+                final destino =
+                    MaterialPageRoute(builder: (_) => Configuracion());
                 Navigator.push(context, destino);
-              }
-            )
-          ]
-        ),
+              })
+        ]),
         //##################### Body #####################
         body: SingleChildScrollView(
             child: Column(
@@ -81,12 +73,8 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
               child: Padding(
                 padding: EdgeInsets.all(8),
                 child: TextField(
-                  controller: controlNombre,
-                  style: TextStyle(
-                    color: tema.colorScheme.primary
-                    )
-                
-                ),
+                    controller: controlNombre,
+                    style: TextStyle(color: tema.colorScheme.primary)),
               ),
             ),
             const Align(
@@ -316,15 +304,10 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
             Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.all(8), 
-                  child: TextField(
-                    controller: controlFrecuencia,
-                    style: TextStyle(
-                      color: tema.colorScheme.primary
-                  )
-                )
-              )
-            ),
+                    padding: EdgeInsets.all(8),
+                    child: TextField(
+                        controller: controlFrecuencia,
+                        style: TextStyle(color: tema.colorScheme.primary)))),
             const Align(
                 alignment: Alignment.center,
                 child: Padding(
@@ -334,15 +317,10 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
             Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.all(8), 
-                  child: TextField(
-                    controller: controlCantidad,
-                    style: TextStyle(
-                      color: tema.colorScheme.primary
-                  )
-                )
-              )
-            ),
+                    padding: EdgeInsets.all(8),
+                    child: TextField(
+                        controller: controlCantidad,
+                        style: TextStyle(color: tema.colorScheme.primary)))),
             const Align(
                 alignment: Alignment.center,
                 child: Padding(
@@ -352,21 +330,20 @@ class _NuevoMedicamento_1State extends State<NuevoMedicamento_1> {
             Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.all(8), 
-                  child: TextField(
-                    controller: controlDosis,
-                    style: TextStyle(
-                      color: tema.colorScheme.primary
-                  )
-                )
-              )
-            ),
+                    padding: EdgeInsets.all(8),
+                    child: TextField(
+                        controller: controlDosis,
+                        style: TextStyle(color: tema.colorScheme.primary)))),
             Align(
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
                       onPressed: () {
+                        medicamento.nombre = controlNombre.text;
+                        medicamento.cantidadActual = controlCantidad.text;
+                        medicamento.dosis = controlDosis.text;
+                        medicamento.frecuencia = controlFrecuencia.text;
                         medicamento.saveMedicamento(medicamento);
                         final destino = MaterialPageRoute(
                             builder: (_) => ListaMedicamentos());
